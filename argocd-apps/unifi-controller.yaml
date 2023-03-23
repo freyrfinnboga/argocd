@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample-app
+  name: unifi-controller
   namespace: argocd
 spec:
   destination:
@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: sample-project
   source:
-    path: sample-app/
-    repoURL: https://github.com/kurtburak/argocd.git
+    path: unifi-controller/
+    repoURL: https://github.com/dominikfe/argocd.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
