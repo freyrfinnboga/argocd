@@ -1,0 +1,47 @@
+# Create UniFi Poller
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-poller
+  namespace: unpoller
+  labels:
+    app: unifi-poller
+    type: poller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unifi-poller
+      type: poller
+  template:
+    metadata:
+      labels:
+        app: unifi-poller
+        type: poller
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9130"
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+      - name: unifi-poller
+        image: golift/unifi-poller:latest
+        ports:
+        - containerPort: 9130
+          name: 'tcp'
+          protocol: TCP
+        - containerPort: 37288
+          name: 'webserver'
+          protocol: TCP
+        - containerPort: 9130
+          name: udp
+          protocol: UDP
+        volumeMounts:
+        - name: nfs-unpoller
+          mountPath: /config/unifi-poller.conf
+          subPath: unifi-poller.conf
+      volumes:
+        - name: nfs-unpoller
+          persistentVolumeClaim:
+            claimName: nfs-unpoller
