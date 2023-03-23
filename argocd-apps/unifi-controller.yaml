@@ -2,10 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: unifi-controller
-  namespace: unifi
+  namespace: sample-project
 spec:
   destination:
-    namespace: unifi
+    namespace: sample-project
     server: https://kubernetes.default.svc
   project: sample-project
   source:
