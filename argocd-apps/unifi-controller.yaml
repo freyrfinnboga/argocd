@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: sample-project
   source:
-    path: unifi-controller
+    path: unifi-controller/
     repoURL: https://github.com/dominikfe/argocd.git
     targetRevision: HEAD
   syncPolicy:
