@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: unifi-controller
+  name: sample-app
   namespace: argocd
 spec:
   destination:
