@@ -8,7 +8,7 @@ spec:
   - group: '*'
     kind: '*'
   destinations:
-  - namespace: unifi
+  - namespace: sample-project
     server: https://kubernetes.default.svc
   orphanedResources:
     warn: false
